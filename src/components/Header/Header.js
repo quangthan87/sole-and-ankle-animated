@@ -20,12 +20,54 @@ const Header = () => {
           <Logo />
         </LogoWrapper>
         <DesktopNav>
-          <NavLink href="/sale">Sale</NavLink>
-          <NavLink href="/new">New&nbsp;Releases</NavLink>
-          <NavLink href="/men">Men</NavLink>
-          <NavLink href="/women">Women</NavLink>
-          <NavLink href="/kids">Kids</NavLink>
-          <NavLink href="/collections">Collections</NavLink>
+          <NavLink href="/sale">
+            <NavLinkText>
+              Sale
+            </NavLinkText>
+            <NavLinkTextBold>
+              Sale
+            </NavLinkTextBold>
+          </NavLink>
+          <NavLink href="/new">
+            <NavLinkText>
+              New&nbsp;Releases
+            </NavLinkText>
+            <NavLinkTextBold>
+              New&nbsp;Releases
+            </NavLinkTextBold>
+          </NavLink>
+          <NavLink href="/men">
+            <NavLinkText>
+              Men
+            </NavLinkText>
+            <NavLinkTextBold>
+              Men
+            </NavLinkTextBold>
+          </NavLink>
+          <NavLink href="/women">
+            <NavLinkText>
+              Women
+            </NavLinkText>
+            <NavLinkTextBold>
+              Women
+            </NavLinkTextBold>
+          </NavLink>
+          <NavLink href="/kids">
+            <NavLinkText>
+              Kids
+            </NavLinkText>
+            <NavLinkTextBold>
+              Kids
+            </NavLinkTextBold>
+          </NavLink>
+          <NavLink href="/collections">
+            <NavLinkText>
+              Collections
+            </NavLinkText>
+            <NavLinkTextBold>
+              Collections
+            </NavLinkTextBold>
+          </NavLink>
         </DesktopNav>
         <MobileActions>
           <ShoppingBagButton>
@@ -114,16 +156,48 @@ const Filler = styled.div`
   }
 `;
 
+const NavLinkText = styled.div`
+  will-change: transform;
+  
+  @media (prefers-reduced-motion: no-preference) {
+    transition: transform 500ms;
+  }
+`;
+
+const NavLinkTextBold = styled(NavLinkText)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-weight: ${WEIGHTS.bold};
+  transform: translateY(100%);
+`;
+
 const NavLink = styled.a`
   font-size: 1.125rem;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--color-gray-900);
   font-weight: ${WEIGHTS.medium};
+  position: relative;
+  overflow: hidden;
 
   &:first-of-type {
     color: var(--color-secondary);
   }
+
+  &:hover ${NavLinkText} {
+    transform: translateY(-100%);
+  }
+
+  &:hover ${NavLinkTextBold} {
+    transform: translateY(0%);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    &:hover ${NavLinkTextBold} {
+      transition: transform 250ms;
+    }
+  } 
 `;
 
 export default Header;
